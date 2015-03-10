@@ -1,0 +1,25 @@
+<h1> Statistics </h1>
+
+<% if @score<0 %>
+<h2> You have obtained a negative score! :( </h2>
+<% else %>
+<h2> Your score is <%=  @score %>
+</h2> 
+<% end %>
+
+<table style="margin:0 auto;">
+	<tr>
+<td><h4>Subject </h4></td>
+<td><h4>Correct </h4></td>
+<td><h4> Wrong</h4></td>
+</tr>
+<% Scode.all.each do |subject| %>
+<% unless subject.id == 1 %>
+<tr>
+<td><h4>  <%= subject.sname %></h4></td>
+<td> <%= @subm[subject.id] %> </td>
+<td> <%= @subr[subject.id] %> </td>
+</tr>
+<% end  %>
+<% end %>
+</table>

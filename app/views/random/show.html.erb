@@ -1,0 +1,43 @@
+<h1>Single random question</h1>
+<% if @questionx.examcode == 0 %>
+<div>
+<p  class="text-danger"> <%= @questionx.question.html_safe %>  </p>
+</div>
+<% else %>
+<div class="text-left">
+<p> <%= @questionx.question.html_safe %>  </p>
+<%= form_for(:question, :url => {:action => "create"}) do |f| %>
+<p> 
+<%= f.label "Options: " %>
+<table >
+<tr>
+<td><%= f.radio_button @questionx.id, "A" %></td>
+<td><%= f.label "a", raw("#{@questionx.opa}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button @questionx.id, "B" %></td>
+<td><%= f.label "b", raw("#{@questionx.opb}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button @questionx.id, "C" %></td>
+<td><%= f.label "c", raw("#{@questionx.opc}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button @questionx.id, "D" %></td>
+<td><%= f.label "d", raw("#{@questionx.opd}") %></td>
+</tr>
+</table>
+</p>
+</div>
+<div class="text-center">
+ <%= f.hidden_field :q_id => @questionx.id %>
+
+<p>
+<%= f.submit "Go!", :class => 'btn btn-primary btn-lg' %> 
+</p>
+<% end %>
+</div>
+<% end %>
+<p> Go back to
+  <%= link_to "home", random_index_path %>
+</p>

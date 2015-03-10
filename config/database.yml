@@ -1,0 +1,39 @@
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MYSQL driver
+#   gem install mysql2
+#
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+development:
+  adapter: mysql
+  encoding: utf8
+  database: jeeque_dev
+  pool: 5
+  username: akshay
+  password: rorexam
+  socket: /var/run/mysqld/mysqld.sock
+  port: 3306
+test: &test
+ adapter: mysql
+ encoding: utf8
+ database: <%=ENV['OPENSHIFT_APP_NAME']%>
+ pool: 5
+ host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+ port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+ username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
+ password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
+ socket: <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
+production:
+ adapter: mysql
+ encoding: utf8
+ database: <%=ENV['OPENSHIFT_APP_NAME']%>
+ pool: 5
+ host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+ port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+ username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
+ password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
+ socket: <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>

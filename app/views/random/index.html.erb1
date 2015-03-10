@@ -1,0 +1,34 @@
+<h1>Single Question</h1>
+<div class="form-group">
+<%= form_for :question do |form| %> 
+<% if true %>
+<div class="row-fluid" style="margin-left:0;">
+<div class="span4">
+<%= form.label "Subject: " %>
+<%= form.select :subject, @scode %>
+</div>
+<div class="span4">
+<%= form.label :topiccode, "Topic: " %>
+<%= form.grouped_collection_select :topiccode , Scode.all, :topiccode, :sname, :tcode, :tname %>
+</div>
+<div class="span4">
+<%= form.label "Sub Topic: " %>
+<%= form.grouped_collection_select :stopic , Topiccode.all, :subtopiccode, :tname, :stcode, :stname %>
+</div>
+</div>
+ <p class="actions">
+    <%= form.submit 'Generate Single Question', :class => 'btn btn-primary btn-lg' %>
+ </p>
+ <% end %>
+<% end %>
+</div>
+<h1>Question Paper</h1>
+<%= form_for :question do |form| %> 
+<p>
+	<%= form.label :year %>
+	<%= form.select :year,  (1960..2014) , :include_blank => true%>
+</p>
+<p class="actions">
+    <%= form.submit 'Generate Question Paper' , :class => 'btn btn-primary btn-lg'%>
+</p>
+<% end %>

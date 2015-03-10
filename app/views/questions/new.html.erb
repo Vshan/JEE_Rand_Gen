@@ -1,0 +1,8 @@
+   <%= javascript_include_tag "questions", "data-turbolinks-track" => true %>
+   <%= javascript_include_tag "ckeditor/ckeditor", "data-turbolinks-track" => true %>
+   <%= stylesheet_link_tag    "ckeditor/ckeditor", media: "all", "data-turbolinks-track" => true %>
+   <h1>New question</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', questions_path %>

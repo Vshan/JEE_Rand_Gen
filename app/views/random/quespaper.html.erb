@@ -1,0 +1,51 @@
+<%= javascript_include_tag "random", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "circle-progress", "data-turbolinks-track" => true %>
+
+<h1>Question Paper</h1>
+<div id="circlet"><div id="untilt" style="margin-top:-55px;margin-bottom:40px"></div></div>
+<div class="links"></div>
+<%= form_for(:question) do |f| %>
+
+<% @scodes.each do |s| %>
+<% unless s.scode == 1  #to prevent All from showing up %>
+<h2 class="sub"> <%= s.sname %> </h2>
+<% @sub[s.scode].each do |question| %> 
+<div class="text-left quesx">
+<p><%= question.question.html_safe %></p>
+ 
+<p> 
+<%= f.label "Option: " %>
+<table >
+<tr>
+<td><%= f.radio_button question.id, "A" %></td>
+<td><%= f.label "a", raw("#{question.opa}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button question.id, "B" %></td>
+<td><%= f.label "b", raw("#{question.opb}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button question.id, "C" %></td>
+<td><%= f.label "c", raw("#{question.opc}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button question.id, "D" %></td>
+<td><%= f.label "d", raw("#{question.opd}") %></td>
+</tr>
+</table>
+</p>
+<hr>
+</div>
+<% end %>
+<!-- <hr size="6" style="background-color:black;"> -->
+<% end %>
+<% end %>
+<p class = "actions">
+	<div class="btn btn-primary">Prev</div> &nbsp;<div class="btn btn-primary">Next</div>
+	<br/><br/>
+<%= f.submit 'Submit Paper' , :class => 'btn btn-primary btn-lg qpsubmit'%> 
+</p>
+<% end %>
+<p> Go back to
+  <%= link_to "home", random_index_path %>
+</p>

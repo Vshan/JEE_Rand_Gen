@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JEE Question Base</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "random", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top ">
+    <div class="navbar-inner">
+    <a class="brand" href="/"><img alt="Brand" src="/logo.png">JEE Question Base </a>
+    <ul class="nav">
+     <li><a href="/">Home</a></li>
+     <li><a href="/">About</a></li>
+     <li><a href="/">Contact</a></li>
+     </ul>
+     <ul class = "nav pull-right">
+     <% if  admin_signed_in? %>
+     <li><%= link_to('Admin Panel', rails_admin_path) %></li>
+     <li class="list-group-item"><a href="#"><%= current_admin.email %><span class="badge">Admin</span></a></li>
+     <li><%= link_to('Logout', destroy_admin_session_path, :method => :delete) %></li>
+     <% elsif  user_signed_in? %>
+     <li class="list-group-item"><a href="#"><%= current_user.email %></a></li>  
+     <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+     <% else %>
+     <li><%= link_to('Login', new_user_session_path) %></li>
+     <% end %>
+     </ul>
+     </div>
+     </div>
+
+  <div class="container text-center" >
+   <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+   <% end %>
+   <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+   <% end %>
+   <%= yield %>
+  </div>
+  <div class="text-center footer">
+    <p class="text-info">Copyright &copy; 2015 <br/> Made by <a href="https://www.facebook.com/revankar.akshay">Akshay</a>, <a href="https://www.facebook.com/profile.php?id=1763535774">Chandramouli</a>, <a href="https://www.facebook.com/huz.abbasi">Huzaifa</a>, and <a href="https://www.facebook.com/vinaybhat001">Vinay</a>.</p>
+  </div>
+  <script type="text/javascript">$(document).ready(function() {
+    if ($('textarea').length > 0) {
+        var data = $('textarea');
+        $.each(data, function(i) {
+            CKEDITOR.replace(data[i].id);
+        });
+    }
+});</script>
+</body>
+</html>
+

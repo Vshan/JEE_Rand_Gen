@@ -1,0 +1,42 @@
+  <%= stylesheet_link_tag    "random", media: "all", "data-turbolinks-track" => true %>
+  <h1>Single random question</h1>
+<% if @rand.examcode == 0 %>
+<div>
+<p  class="text-danger"> <%= @rand.question.html_safe %>  </p>
+</div>
+<% else %>
+<div class="text-left">
+<p> <%= @rand.question.html_safe %>  </p>
+<%= form_for(:question) do |f| %>
+<p> 
+<%= f.label "Options: " %>
+<table >
+<tr>
+<td><%= f.radio_button @rand.id, "A" %></td>
+<td><%= f.label "a", raw("#{@rand.opa}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button @rand.id, "B" %></td>
+<td><%= f.label "b", raw("#{@rand.opb}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button @rand.id, "C" %></td>
+<td><%= f.label "c", raw("#{@rand.opc}") %></td>
+</tr>
+<tr>
+<td><%= f.radio_button @rand.id, "D" %></td>
+<td><%= f.label "d", raw("#{@rand.opd}") %></td>
+</tr>
+</table>
+</p>
+</div>
+<div class="text-center">
+<p>
+<%= f.submit "Go!", :class => 'btn btn-primary btn-lg' %> 
+</p>
+<% end %>
+</div>
+<% end %>
+<p> Go back to
+  <%= link_to "home", random_index_path %>
+</p>

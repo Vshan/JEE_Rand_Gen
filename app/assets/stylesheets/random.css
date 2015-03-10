@@ -1,0 +1,67 @@
+ul li{
+	display:inline;
+	list-style:none;
+}
+ul{	
+	margin:0 auto;
+}
+label{
+	display:initial;
+}
+.form-akshay{
+	display:initial;
+	white-space:nowrap;
+}
+.actions{
+	padding-top:10px;
+}
+
+#circlet{
+	position:fixed;
+	right:0;
+	top:50;
+}
+
+
+.ndone
+{
+	color: white;
+    background-color: rgba(255,0,0,0.67);
+}
+.onit
+{
+	color: black;
+    background-color: rgba(255,255,0,0.67);
+}
+.done
+{
+	color: white;
+    background-color: rgba(0,153,0,0.67);
+
+}
+a.ndone:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+    }
+a.onit:hover {
+    color: #000000;
+    text-decoration: none;
+    }
+a.done:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+    }
+
+a.ndone:focus {
+    color: #000000;
+    text-decoration: none;
+    }
+a.ndone:focus {
+    color: #000000;
+    text-decoration: none;
+    }
+a.done:focus {
+    color: #000000;
+    text-decoration: none;
+    }
+

@@ -1,0 +1,18 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+jQuery ->
+$('#topiccode').hide()
+
+#topics = $('#question_topiccode').html()
+#$('#question_subject').change ->
+#subject = $('#question_subject').text()
+#options = $(topics).filter("optgroup[label='#{subject}']").html()
+
+#if options
+# $('#question_topiccode').html(options)
+# $('#question_topiccode').parent().show()
+#else
+# $('#question_topiccode').empty()
+# $('#question_topiccode').parent().hide()

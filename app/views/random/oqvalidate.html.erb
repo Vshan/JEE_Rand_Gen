@@ -1,0 +1,33 @@
+<%if @op ==1 || @op == 0 %>
+ <% if @op == 1 %>
+ <p class="alert alert-success">Awesome! That's the right answer!</p>
+ <% elsif @op == 0 %>
+ <p class="alert alert-danger">Sorry, that's the wrong answer.</p>
+ <div class="text-left">
+ <p>The right answer is option <%= @question_chosen.ro %> :
+  <%if @question_chosen.ro== 'A' %>
+   <%= @question_chosen.opa.html_safe %>
+  <% elsif @question_chosen.ro== 'B' %>
+   <%= @question_chosen.opb.html_safe %>
+  <% elsif @question_chosen.ro== 'C' %>
+   <%= @question_chosen.opc.html_safe %>
+  <% elsif @question_chosen.ro== 'D' %>
+   <%= @question_chosen.opd.html_safe %>
+  <% end %>
+ </p>
+ </div>
+ <% end %> 
+<%= form_for :question do |form| %> 
+ <p class="actions">
+    <%= form.submit 'Generate Another Question' , :class => 'btn btn-success btn-lg'%>
+ </p>
+<% end %> 
+<% else @op == 2 %>
+<p>Go back and enter an option.</p>
+<%= form_for :question do |form| %> 
+<%= form.hidden_field :q_id => @qid %>
+ <p class="actions">
+    <%= form.submit 'Go back' , :class => 'btn btn-danger btn-lg'%>
+ </p>
+<% end %> 
+<% end %>
